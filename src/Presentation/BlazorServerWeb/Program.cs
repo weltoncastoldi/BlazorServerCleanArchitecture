@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Application.Extensions;
 using BlazorServerWeb.Data;
+using Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddApplicationLayer();
+builder.Services.AddPersistenceLayer(builder.Configuration);
 
 var app = builder.Build();
 
